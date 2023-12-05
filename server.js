@@ -22,10 +22,10 @@ const db = require("./src/models");
 const Role = db.role;
 //initial();
 
-db.sequelize.sync().then(() => {
+/*db.sequelize.sync().then(() => {
   initial();
 });
-
+*/
 
 //force: true will drop the table if it already exists
 /*db.sequelize.sync({ force: true }).then(() => {
@@ -50,14 +50,16 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-function initial() {
-  Role.create({
-    id: 1,
+Role.findOrCreate({
+  where: { id: 1 },
+  defaults: {
     name: "user",
-  });
+  },
+});
 
-  Role.create({
-    id: 2,
+Role.findOrCreate({
+  where: { id: 2 },
+  defaults: {
     name: "admin",
-  });
-}
+  },
+});
