@@ -20,10 +20,10 @@ app.use(
 // database
 const db = require("./src/models");
 const Role = db.role;
-initial();
+//initial();
 
 db.sequelize.sync().then(() => {
-  //initial();
+  initial();
 });
 
 
