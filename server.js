@@ -19,7 +19,7 @@ app.use(
 
 // database
 const db = require("./src/models");
-//const Role = db.role;
+const Role = db.role;
 //initial();
 
 db.sequelize.sync().then(() => {
@@ -51,7 +51,7 @@ app.listen(PORT, () => {
 });
 
 function initial() {
-  const Role = db.role;
+  
   Role.create({
     id: 1,
     name: "user",
