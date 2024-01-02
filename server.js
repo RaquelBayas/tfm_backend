@@ -23,7 +23,7 @@ const db = require("./src/models");
 //initial();
 
 db.sequelize.sync().then(() => {
-  //initial();
+  initial();
 });
 
 
@@ -49,17 +49,16 @@ const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-/*
-Role.findOrCreate({
-  where: { id: 1 },
-  defaults: {
-    name: "user",
-  },
-});
 
-Role.findOrCreate({
-  where: { id: 2 },
-  defaults: {
+function initial() {
+  const Role = db.role;
+  Role.create({
+    id: 1,
+    name: "user",
+  });
+
+  Role.create({
+    id: 2,
     name: "admin",
-  },
-});*/
+  });
+}
